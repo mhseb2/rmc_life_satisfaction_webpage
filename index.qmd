@@ -57,10 +57,14 @@ The main life evaluation question asked in the poll is the Cantril Life Ladder q
  cantril_wider <-  pivot_wider(cantril, names_from = Year, values_from = `Cantril ladder score`, id_cols = Country)
 
 
+
 hap_table <- cantril_wider %>% 
   select(Country, `2011`, `2023`) %>% 
-  mutate(absolute_change = (`2023` - `2011`),
-         relative_change = ((`2023` - `2011`)/`2011`) * 100)
+mutate(absolute_change = round (`2023` - `2011`, 2),
+       relative_change = percent((`2023` - `2011`)/ `2011`, accuracy = 0.01))
+
+
+
 
 reactable(hap_table)
 
