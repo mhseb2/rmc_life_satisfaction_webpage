@@ -3,7 +3,7 @@ title: "Self-reported life satisfaction, 2011 to 2023"
 subtitle: "Replicating the Our World in Data Grapher"
 author: "Mahlaku Sebiloane " # Remember to add your name!
 date: "16-10-2024"
-theme: united
+theme: "yeti"
 ---
 
 <!-- Custom HTML to add logo [DO NOT EDIT THIS SECTION] -->
@@ -116,7 +116,10 @@ cantril_filter <- cantril %>%
 
 hap_plot <- ggplot(cantril_filter, aes(x = Year, y = `Cantril ladder score`, col = Country)) +
   geom_line() +
-  scale_y_continuous(limits = c(0, 10))
+  scale_y_continuous(limits = c(0, 10)) +
+  labs(title = "Line Graph showing happiness for selected countries", x = "Year", 
+       y = "Cantril ladder score") +
+  theme_minimal()
 
 ggplotly(hap_plot)
 ```
